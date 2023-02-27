@@ -52,7 +52,15 @@ def change_currency(currency_data: schemas.CurrencyChange, db: Session):
         values(currency_data.dict(exclude_unset=True)).
         returning(Currencies)
     )
-    res = db.execute(stmt)
+    db.execute(stmt)
     db.commit()
     return db.query(Currencies).filter(Currencies.id == currency_data.id).first()
 
+
+def get_currency(db: Session, currency_id=None):
+    if currency_id:
+        currency = db.query(Currencies).filter(Currencies.id == currency_id).first()
+        if currency is None:
+            raise HTTPException(400, "invalid currency id")
+        return currency
+    return db.query(Currencies).all()

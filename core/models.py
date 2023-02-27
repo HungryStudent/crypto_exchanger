@@ -18,3 +18,5 @@ class Currencies(Base):
     name = Column(VARCHAR(255), unique=True)
     min = Column(Float)
     volume = Column(Float)
+
+

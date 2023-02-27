@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from core import models
 from core.database import engine
-from endpoints import admin
+from endpoints import admin, user
 from fastapi.middleware.cors import CORSMiddleware
 from core import crud
 
@@ -25,3 +25,4 @@ app.add_middleware(
 )
 
 app.include_router(admin.router, prefix="/api/admin")
+app.include_router(user.router, prefix="/api")
