@@ -36,10 +36,14 @@ def change_config(db: Session, configs: List[schemas.Config]):
 def create_currency(currency_data: schemas.CurrencyCreate, db: Session):
     currency = Currencies(name=currency_data.name, min=currency_data.min, volume=currency_data.volume)
     db.add(currency)
+
     try:
-        db.commit()
+        db.flush()
     except IntegrityError:
         raise HTTPException(400, "This name already exists")
+
+    db.commit()
+    return currency
 
 
 def change_currency(currency_data: schemas.CurrencyChange, db: Session):

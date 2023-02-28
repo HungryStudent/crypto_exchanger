@@ -31,11 +31,11 @@ async def get_currency(currency_id, db: Session = Depends(get_db)):
     return crud.get_currency(db, currency_id)
 
 
-@router.post('/', status_code=201)
+@router.post('/', status_code=201, response_model=schemas.CurrencyOut)
 async def create_currency(currency_data: schemas.CurrencyCreate, authorization: str = Header(),
                           db: Session = Depends(get_db)):
     check_admin_token(authorization)
-    crud.create_currency(currency_data, db)
+    return crud.create_currency(currency_data, db)
 
 
 @router.patch('/', status_code=200, response_model=schemas.CurrencyOut)
