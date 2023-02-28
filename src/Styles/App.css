@@ -1,0 +1,244 @@
+
+.App
+{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  background: linear-gradient(90deg, rgba(15,14,14,1) 22%, rgba(251,63,63,1) 100%);
+}
+.App__title{
+    margin-top: 50px;
+    color: #ffffff; 
+    font-family: ‘Trocchi’, serif; 
+    font-size: 45px; 
+    font-weight: normal; 
+    line-height: 48px; 
+    text-align: center;
+}
+.App__SomeInput{
+    margin-left: 265px;
+    margin-top: 50px;
+    text-align:center;
+    display: grid;
+    grid-template-columns: repeat(3,250px);
+    grid-column-gap: 100px;
+    max-width: 950px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.App__Inputs{
+    border-color: #d6c4cd;
+    border-width: 5px;
+    border-radius: 5555em;
+    padding-top: 7px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+/* .App__Inputs:hover{
+  padding-top: 10px;
+  padding-bottom: 10px;
+} */
+
+.App__SaveBtn{
+    margin-top: 30px;
+    margin-left: 667px;
+    font-family: 'Roboto', sans-serif;
+    padding: 14px 60px;
+    text-transform: uppercase;
+    background-color: gray;
+    color: #fff;  
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+    box-shadow: 0 0 0.125em rgba(255, 255, 255, 0.55), 0 0 0.5em currentColor;
+}
+.App__SaveBtn:hover{
+    background-color: rgb(166, 94, 94);
+    color: #000;
+}
+.App__tableById{
+    margin: 0 auto;
+    table-layout: fixed;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    border-radius: 10px;
+    border-spacing: 0;
+    text-align: center;
+    
+}
+th, td {
+  border-style: solid;
+  border-width: 0 1px 1px 0;
+  border-color: #1beabd;
+  }
+
+  th {
+    background: brown;
+    color: white;
+    text-shadow: 0 1px 1px #2D2020;
+    padding: 10px 20px;
+  }
+
+  td {
+    padding: 10px 20px;
+    background: gray;
+  }
+  th:first-child, td:first-child {
+    text-align: left;
+  }
+
+  th:first-child {
+    border-top-left-radius: 10px;
+  }
+
+  th:last-child {
+    border-top-right-radius: 10px;
+    border-right: none;
+  }
+
+  tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+  }
+
+  tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+  }
+
+  tr td:last-child {
+    border-right: none;
+  }
+
+  .App__Tablebtn{
+    position: absolute;
+    top: 435px;
+    left: 510px;
+    text-transform: uppercase;
+    background-color: gray;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+    border-radius: 10px;
+    box-shadow: 0 0 0.125em rgba(255, 255, 255, 0.55), 0 0 0.5em currentColor;
+    padding: 12px 17px;
+  }
+  .App__Tablebtnelse{
+    position: absolute;
+    top: 647px;
+    left: 470px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    background-color: gray;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+    box-shadow: 0 0 0.125em rgba(255, 255, 255, 0.55), 0 0 0.5em currentColor; 
+    padding: 12px 17px;
+  }
+  .App__Tablebtnif{
+    position: absolute;
+    top: 1047px;
+    left: 470px;
+    text-transform: uppercase;
+    background-color: gray;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+    box-shadow: 0 0 0.125em rgba(255, 255, 255, 0.55), 0 0 0.5em currentColor; 
+    padding: 12px 17px;
+  }
+  .App__Tablebtnif:hover{
+    background-color: rgb(166, 94, 94);
+    color: #000;
+  }
+
+  .App__Tablebtn:hover{
+    background-color: rgb(166, 94, 94);
+    color: #000;
+  }
+  .App__Tablebtnelse:hover{
+    background-color: rgb(166, 94, 94);
+    color: #000;
+  }
+  .App__Add1{
+    margin-top: 50px;
+    
+  }
+  .ForMargin{
+    margin-bottom: 50px;
+  }
+  .App__Add1{
+    margin-left: 440px;
+    display: grid;
+    grid-template-columns: repeat(2,250px);
+    grid-column-gap: 100px;
+    row-gap: 100px;
+    border-style: solid;
+    border-color: gray;
+    max-width: 601px;
+    padding-top: 40px;
+    padding-bottom: 120px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    border-width: 4px;
+  }
+  .App__confirmBtn{
+    position: absolute;
+    top: 830px;
+    left: 695px;
+    padding: 12px 30px;
+    text-transform: uppercase;
+    background-color: gray;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+    box-shadow: 0 0 0.125em rgba(255, 255, 255, 0.55), 0 0 0.5em currentColor;
+  }
+  .App__confirmBtn:hover{
+    background-color: rgb(166, 94, 94);
+    color: #000;
+  }
+  .App__confirmBtn2{
+    position: absolute;
+    top: 1050px;
+    left: 695px;
+    padding: 12px 30px;
+    text-transform: uppercase;
+    background-color: gray;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+    box-shadow: 0 0 0.125em rgba(255, 255, 255, 0.55), 0 0 0.5em currentColor;
+  }
+  .App__confirmBtn2:hover{
+    background-color: rgb(166, 94, 94);
+    color: #000;
+  }
+  .App__confirmBtn2if{
+    position: absolute;
+    top: 1450px;
+    left: 695px;
+    padding: 12px 30px;
+    text-transform: uppercase;
+    background-color: gray;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+    box-shadow: 0 0 0.125em rgba(255, 255, 255, 0.55), 0 0 0.5em currentColor;
+  }
+  .App__confirmBtn2if:hover{
+    background-color: rgb(166, 94, 94);
+    color: #000;
+  }
