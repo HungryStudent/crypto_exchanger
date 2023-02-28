@@ -8,7 +8,6 @@ from core.database import SessionLocal
 from core import crud
 from core import schemas
 from endpoints.admin import check_admin_token
-from configs import admin_info, true_admin_token
 
 router = APIRouter(tags=["Currencies"])
 

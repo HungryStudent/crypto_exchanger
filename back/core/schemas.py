@@ -38,22 +38,22 @@ class CurrencyOut(BaseModel):
 
 
 class PairCreate(BaseModel):
-    currency_one: int
-    currency_two: int
+    currency_one_id: int
+    currency_two_id: int
     marginality: float
 
 
 class PairChange(BaseModel):
     id: int
-    currency_one: int = None
-    currency_two: int = None
+    currency_one_id: int = None
+    currency_two_id: int = None
     marginality: float = None
 
 
 class PairOut(BaseModel):
     id: int
-    currency_one: int
-    currency_two: int
+    currency_one: CurrencyOut
+    currency_two: CurrencyOut
     marginality: float
 
     class Config:

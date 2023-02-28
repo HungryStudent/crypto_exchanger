@@ -25,10 +25,14 @@ class Pairs(Base):
     __tablename__ = "pairs"
 
     id = Column(Integer, primary_key=True, index=True)
-    currency_one = Column(Integer, ForeignKey(Currencies.id, ondelete="CASCADE"))
-    currency_two = Column(Integer, ForeignKey(Currencies.id, ondelete="CASCADE"))
+    currency_one_id = Column(Integer, ForeignKey(Currencies.id, ondelete="CASCADE"))
+    currency_two_id = Column(Integer, ForeignKey(Currencies.id, ondelete="CASCADE"))
     marginality = Column(Float)
-    __table_args__ = (UniqueConstraint("currency_one", "currency_two"), )
+
+    currency_one = relationship("Currencies", foreign_keys=[currency_one_id])
+    currency_two = relationship("Currencies", foreign_keys=[currency_two_id])
+
+    __table_args__ = (UniqueConstraint("currency_one_id", "currency_two_id"), )
 
 
 class Orders(Base):

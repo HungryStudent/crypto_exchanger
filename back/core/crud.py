@@ -73,7 +73,7 @@ def delete_currency(db: Session, currency_id=None):
 
 
 def create_pair(pair_data: schemas.PairCreate, db: Session):
-    pair = Pairs(currency_one=pair_data.currency_one, currency_two=pair_data.currency_two,
+    pair = Pairs(currency_one_id=pair_data.currency_one_id, currency_two_id=pair_data.currency_two_id,
                  marginality=pair_data.marginality)
 
     db.add(pair)

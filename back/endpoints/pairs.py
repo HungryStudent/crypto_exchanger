@@ -39,7 +39,7 @@ async def get_pair(pair_id, db: Session = Depends(get_db)):
 @router.post('/', status_code=201)
 async def create_pair(pair_data: schemas.PairCreate, authorization: str = Header(), db: Session = Depends(get_db)):
     check_admin_token(authorization)
-    if pair_data.currency_one == pair_data.currency_two:
+    if pair_data.currency_one_id == pair_data.currency_two_id:
         raise HTTPException(400, "Choose different currencies")
     crud.create_pair(pair_data, db)
 
