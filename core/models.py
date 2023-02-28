@@ -1,4 +1,5 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, BigInteger, Table, VARCHAR, Float
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, BigInteger, Table, VARCHAR, Float, \
+    ForeignKeyConstraint, UniqueConstraint, TIMESTAMP
 from sqlalchemy.orm import relationship
 
 from .database import Base
@@ -20,3 +21,19 @@ class Currencies(Base):
     volume = Column(Float)
 
 
+class Pairs(Base):
+    __tablename__ = "pairs"
+
+    id = Column(Integer, primary_key=True, index=True)
+    currency_one = Column(Integer, ForeignKey(Currencies.id, ondelete="CASCADE"))
+    currency_two = Column(Integer, ForeignKey(Currencies.id, ondelete="CASCADE"))
+    marginality = Column(Float)
+    __table_args__ = (UniqueConstraint("currency_one", "currency_two"), )
+
+
+class Orders(Base):
+    __tablename__ = "orders"
+
+    id = Column(Integer, primary_key=True, index=True)
+    pair_id = Column(Integer, ForeignKey(Pairs.id, ondelete="NO ACTION"))
+    create_time = Column(TIMESTAMP)

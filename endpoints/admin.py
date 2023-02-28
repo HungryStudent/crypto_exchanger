@@ -1,8 +1,6 @@
-import os.path
 from typing import List
 
-from fastapi import APIRouter, Depends, Cookie, HTTPException, File, UploadFile, Form, Header
-from fastapi import Response
+from fastapi import APIRouter, Depends, HTTPException, Header
 
 from sqlalchemy.orm import Session
 
@@ -48,15 +46,4 @@ async def change_config(configs: List[schemas.Config], authorization: str = Head
     crud.change_config(db, configs)
 
 
-@router.post('/currency/create', status_code=201)
-async def create_currency(currency_data: schemas.CurrencyCreate, authorization: str = Header(),
-                          db: Session = Depends(get_db)):
-    check_admin_token(authorization)
-    crud.create_currency(currency_data, db)
 
-
-@router.post('/currency/update', status_code=200, response_model=schemas.CurrencyOut)
-async def change_currency(currency_data: schemas.CurrencyChange, authorization: str = Header(),
-                          db: Session = Depends(get_db)):
-    check_admin_token(authorization)
-    return crud.change_currency(currency_data, db)

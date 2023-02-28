@@ -5,16 +5,10 @@ from sqlalchemy import update
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
-from sqlalchemy.sql.expression import func
-
 from core import schemas
 from core.models import *
 
-import random
-import string
-
-import hashlib
-from configs import salt, cases_photo_path, games_photo_path, default_configs
+from configs import default_configs
 
 
 def create_default_config(db: Session):
@@ -42,7 +36,10 @@ def change_config(db: Session, configs: List[schemas.Config]):
 def create_currency(currency_data: schemas.CurrencyCreate, db: Session):
     currency = Currencies(name=currency_data.name, min=currency_data.min, volume=currency_data.volume)
     db.add(currency)
-    db.commit()
+    try:
+        db.commit()
+    except IntegrityError:
+        raise HTTPException(400, "This name already exists")
 
 
 def change_currency(currency_data: schemas.CurrencyChange, db: Session):
@@ -64,3 +61,45 @@ def get_currency(db: Session, currency_id=None):
             raise HTTPException(400, "invalid currency id")
         return currency
     return db.query(Currencies).all()
+
+
+def delete_currency(db: Session, currency_id=None):
+    db.query(Currencies).filter(Currencies.id == currency_id).delete()
+    db.commit()
+
+
+def create_pair(pair_data: schemas.PairCreate, db: Session):
+    pair = Pairs(currency_one=pair_data.currency_one, currency_two=pair_data.currency_two,
+                 marginality=pair_data.marginality)
+
+    db.add(pair)
+    try:
+        db.commit()
+    except IntegrityError as e:
+        raise HTTPException(400, "Such a pair already exists | No currency id found")
+
+
+def change_pair(pair_data: schemas.PairChange, db: Session):
+    stmt = (
+        update(Pairs).
+        where(pair_data.id == Currencies.id).
+        values(pair_data.dict(exclude_unset=True)).
+        returning(Pairs)
+    )
+    db.execute(stmt)
+    db.commit()
+    return db.query(Pairs).filter(Pairs.id == pair_data.id).first()
+
+
+def get_pair(db: Session, pair_id=None):
+    if pair_id:
+        pair = db.query(Pairs).filter(Pairs.id == pair_id).first()
+        if pair is None:
+            raise HTTPException(400, "invalid pair id")
+        return pair
+    return db.query(Pairs).all()
+
+
+def delete_pair(db: Session, pair_id=None):
+    db.query(Pairs).filter(Pairs.id == pair_id).delete()
+    db.commit()

@@ -1,5 +1,3 @@
-from typing import List, Union
-
 from pydantic import BaseModel
 
 
@@ -38,6 +36,28 @@ class CurrencyOut(BaseModel):
     class Config:
         orm_mode = True
 
+
+class PairCreate(BaseModel):
+    currency_one: int
+    currency_two: int
+    marginality: float
+
+
+class PairChange(BaseModel):
+    id: int
+    currency_one: int = None
+    currency_two: int = None
+    marginality: float = None
+
+
+class PairOut(BaseModel):
+    id: int
+    currency_one: int
+    currency_two: int
+    marginality: float
+
+    class Config:
+        orm_mode = True
 
 class AuthResponse(BaseModel):
     status: str
