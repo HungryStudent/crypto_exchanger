@@ -18,7 +18,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(admin.router, prefix="/api/admin")
+app.include_router(admin.router, prefix="/api/admins")
 app.include_router(user.router, prefix="/api")
 app.include_router(pairs.router, prefix="/api/pair")
 app.include_router(currency.router, prefix="/api/currency")
