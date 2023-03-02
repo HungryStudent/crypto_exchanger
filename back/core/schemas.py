@@ -21,7 +21,6 @@ class CurrencyCreate(BaseModel):
 
 
 class CurrencyChange(BaseModel):
-    id: int
     name: str = None
     min: float = None
     volume: float = None
@@ -44,7 +43,6 @@ class PairCreate(BaseModel):
 
 
 class PairChange(BaseModel):
-    id: int
     currency_one_id: int = None
     currency_two_id: int = None
     marginality: float = None
@@ -58,6 +56,7 @@ class PairOut(BaseModel):
 
     class Config:
         orm_mode = True
+
 
 class AuthResponse(BaseModel):
     status: str

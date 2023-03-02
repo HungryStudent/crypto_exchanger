@@ -46,16 +46,16 @@ def create_currency(currency_data: schemas.CurrencyCreate, db: Session):
     return currency
 
 
-def change_currency(currency_data: schemas.CurrencyChange, db: Session):
+def change_currency(currency_id, currency_data: schemas.CurrencyChange, db: Session):
     stmt = (
         update(Currencies).
-        where(currency_data.id == Currencies.id).
+        where(currency_id == Currencies.id).
         values(currency_data.dict(exclude_unset=True)).
         returning(Currencies)
     )
     db.execute(stmt)
     db.commit()
-    return db.query(Currencies).filter(Currencies.id == currency_data.id).first()
+    return db.query(Currencies).filter(Currencies.id == currency_id).first()
 
 
 def get_currency(db: Session, currency_id=None):
@@ -85,16 +85,16 @@ def create_pair(pair_data: schemas.PairCreate, db: Session):
     return pair
 
 
-def change_pair(pair_data: schemas.PairChange, db: Session):
+def change_pair(pair_id, pair_data: schemas.PairChange, db: Session):
     stmt = (
         update(Pairs).
-        where(pair_data.id == Currencies.id).
+        where(pair_id == Currencies.id).
         values(pair_data.dict(exclude_unset=True)).
         returning(Pairs)
     )
     db.execute(stmt)
     db.commit()
-    return db.query(Pairs).filter(Pairs.id == pair_data.id).first()
+    return db.query(Pairs).filter(Pairs.id == pair_id).first()
 
 
 def get_pair(db: Session, pair_id=None):

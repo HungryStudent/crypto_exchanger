@@ -44,10 +44,10 @@ async def create_pair(pair_data: schemas.PairCreate, authorization: str = Header
     return crud.create_pair(pair_data, db)
 
 
-@router.patch('/', status_code=200, response_model=schemas.PairOut)
-async def change_pair(pair_data: schemas.PairChange, authorization: str = Header(), db: Session = Depends(get_db)):
+@router.patch('/{pair_id}', status_code=200, response_model=schemas.PairOut)
+async def change_pair(pair_id, pair_data: schemas.PairChange, authorization: str = Header(), db: Session = Depends(get_db)):
     check_admin_token(authorization)
-    return crud.change_pair(pair_data, db)
+    return crud.change_pair(pair_id, pair_data, db)
 
 
 @router.delete('/{pair_id}', status_code=200)
