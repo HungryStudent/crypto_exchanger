@@ -78,9 +78,11 @@ def create_pair(pair_data: schemas.PairCreate, db: Session):
 
     db.add(pair)
     try:
-        db.commit()
+        db.flush()
     except IntegrityError as e:
         raise HTTPException(400, "Such a pair already exists | No currency id found")
+    db.commit()
+    return pair
 
 
 def change_pair(pair_data: schemas.PairChange, db: Session):
