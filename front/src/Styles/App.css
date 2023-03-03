@@ -1,3 +1,56 @@
+body,a{
+  font-family: "Montserrat", serif;
+}
+
+.modal{
+  position: absolute;
+  width: 500px;
+  height: 280px;
+  background-color: #000;
+  top: 0;
+  left: 5%;
+  z-index: 999;
+  border-radius: 10px;
+  border-color: gray;
+  border-style: solid;
+  display: grid;
+  grid-template-columns: repeat(2,150px);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 100px;
+  padding-top: 30px;
+  padding-bottom: 2px;
+  padding-left: 40px;
+  row-gap: 0px;
+}
+.modal1{
+  position: absolute;
+  width: 500px;
+  height: 280px;
+  background-color: #000;
+  top: 0;
+  left: 2%;
+  z-index: 999;
+  border-radius: 10px;
+  border-color: gray;
+  border-style: solid;
+  display: grid;
+  grid-template-columns: repeat(2,150px);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 100px;
+  padding-top: 30px;
+  padding-bottom: 2px;
+  padding-left: 40px;
+  row-gap: 0px;
+}
+
+.ForInpMargin{
+  border-width: 2px;
+  border-radius: 10px;
+  padding-top: 7px;
+  padding-bottom: 10px;
+  padding-right: 50px;
+  width: 125px;
+}
 
 .App
 {
@@ -7,21 +60,21 @@
   top: 0;
   left: 0;
   overflow: auto;
-  background: linear-gradient(90deg, rgba(15,14,14,1) 22%, rgba(251,63,63,1) 100%);
+  background: #121910
 }
 .App__title{
     margin-top: 50px;
     color: #ffffff; 
-    font-family: ‘Trocchi’, serif; 
     font-size: 45px; 
     font-weight: normal; 
     line-height: 48px; 
     text-align: center;
 }
 .App__SomeInput{
-    margin-left: 265px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 50px;
-    text-align:center;
+    text-align: center;
     display: grid;
     grid-template-columns: repeat(3,250px);
     grid-column-gap: 100px;
@@ -32,23 +85,29 @@
     padding-right: 20px;
 }
 .App__Inputs{
-    border-color: #d6c4cd;
-    border-width: 5px;
-    border-radius: 5555em;
+    
+    border-width: 2px;
+    border-radius: 10px;
     padding-top: 7px;
     padding-bottom: 10px;
     padding-right: 10px;
 }
-
-/* .App__Inputs:hover{
-  padding-top: 10px;
+.App__Select{
+  border-width: 2px;
+  border-radius: 10px;
+  padding-top: 7px;
   padding-bottom: 10px;
-} */
+  padding-right: 135px;
+}
+.container{
+  display: flex;	
+  justify-content: center;	
+}
+
+
 
 .App__SaveBtn{
     margin-top: 30px;
-    margin-left: 667px;
-    font-family: 'Roboto', sans-serif;
     padding: 14px 60px;
     text-transform: uppercase;
     background-color: gray;
@@ -63,31 +122,32 @@
     color: #000;
 }
 .App__tableById{
-    margin: 0 auto;
-    table-layout: fixed;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-    font-size: 14px;
-    border-radius: 10px;
-    border-spacing: 0;
+    display: inline-block;
     text-align: center;
+    table-layout: fixed;
+    font-size: 16px;
+    border-radius: 10px;
+    color: #fff;
+    border-spacing: 0;
     
 }
 th, td {
   border-style: solid;
   border-width: 0 1px 1px 0;
-  border-color: #1beabd;
+  border: none;
   }
 
   th {
-    background: brown;
+    padding: 15px 20px;
     color: white;
     text-shadow: 0 1px 1px #2D2020;
-    padding: 10px 20px;
+    
   }
 
   td {
-    padding: 10px 20px;
-    background: gray;
+    padding: 15px 40px;
+    border-bottom: 1px solid #fff;
+   
   }
   th:first-child, td:first-child {
     text-align: left;
@@ -114,10 +174,55 @@ th, td {
     border-right: none;
   }
 
+  .App__FirstTable{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  .ForDel{
+    position: relative;
+    display: inline;
+    margin-left: -15px;
+    margin-right: 30px;
+    background-color: #000;
+    color: #fff;
+    border-color: #fff;
+    padding: 7px 7px;
+    cursor: pointer;
+    background-image: url(../svg/delete.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 0;
+    width: 35px;
+    height: 35px;
+  }
+
+  .ForDel1{
+    display: inline;
+    margin-left: -15px;
+    margin-right: 30px;
+    background-color: #000;
+    color: #fff;
+    border-color: #fff;
+    padding: 7px 7px;
+    cursor: pointer;
+    background-image: url(../svg/edit.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 0;
+    width: 35px;
+    height: 35px;
+  }
+  .ForDel__tr{
+    position: relative;
+  }
+
+
   .App__Tablebtn{
-    position: absolute;
-    top: 435px;
-    left: 510px;
+    display: inline-block;
+    margin-right: 20px;
+    float: left;
     text-transform: uppercase;
     background-color: gray;
     color: #fff;
@@ -129,9 +234,9 @@ th, td {
     padding: 12px 17px;
   }
   .App__Tablebtnelse{
-    position: absolute;
-    top: 647px;
-    left: 470px;
+    display: inline-block;
+    margin-right: 20px;
+    float: left;
     text-transform: uppercase;
     border-radius: 10px;
     background-color: gray;
@@ -143,11 +248,12 @@ th, td {
     padding: 12px 17px;
   }
   .App__Tablebtnif{
-    position: absolute;
-    top: 1047px;
-    left: 470px;
+    display: inline-block;
+    margin-right: 20px;
+    float: left;
     text-transform: uppercase;
     background-color: gray;
+    border-radius: 10px;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -175,26 +281,70 @@ th, td {
   .ForMargin{
     margin-bottom: 50px;
   }
+  label, input, select{
+    display: block;
+  }
   .App__Add1{
-    margin-left: 440px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
     display: grid;
     grid-template-columns: repeat(2,250px);
     grid-column-gap: 100px;
-    row-gap: 100px;
+    row-gap: 50px;
     border-style: solid;
     border-color: gray;
     max-width: 601px;
     padding-top: 40px;
-    padding-bottom: 120px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-bottom: 60px;
+    padding-left: 60px;
     border-radius: 10px;
     border-width: 4px;
   }
-  .App__confirmBtn{
+  .ForInp{
+    color: #fff;
+  }
+  .ForInpM{
+    color: #fff;
+    text-align: left;
+    height: 20px;
+  }
+  .App__confirmBtnEdit{
     position: absolute;
-    top: 830px;
-    left: 695px;
+    left: 37%;
+    top: 75%;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 12px 30px; 
+    background-color: gray;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+    box-shadow: 0 0 0.125em rgba(255, 255, 255, 0.55), 0 0 0.5em currentColor;
+  }
+  .App__closeModalBtn{
+    position: absolute; 
+    top: 0%;
+    right: 0%;
+    cursor: pointer;
+    color: black;
+    background-color: gray;
+    font-size: 25px;
+    border-radius: 7px;
+  }
+  .App__closeModalBtn:hover{
+     color:red;
+     background-color: #000;
+  }
+  .App__confirmBtnEdit:hover{
+    background-color: rgb(166, 94, 94);
+    color: #000;
+  }
+  .App__confirmBtn{
+    margin-right: 170%;
+    margin-top: 120px;
+    text-align: center;
     padding: 12px 30px;
     text-transform: uppercase;
     background-color: gray;
@@ -209,10 +359,10 @@ th, td {
     color: #000;
   }
   .App__confirmBtn2{
-    position: absolute;
-    top: 1050px;
-    left: 695px;
+    margin-right: 170%;
+    margin-top: 120px;
     padding: 12px 30px;
+    text-align: center;
     text-transform: uppercase;
     background-color: gray;
     color: #fff;
@@ -226,9 +376,8 @@ th, td {
     color: #000;
   }
   .App__confirmBtn2if{
-    position: absolute;
-    top: 1450px;
-    left: 695px;
+    margin-right: 170%;
+    margin-top: 120px;
     padding: 12px 30px;
     text-transform: uppercase;
     background-color: gray;

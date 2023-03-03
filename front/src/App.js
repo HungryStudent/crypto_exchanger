@@ -49,7 +49,6 @@ return (
             (
               <>
               <Route exact path='/' element={<Login />} />
-              <Route exact path='/main' element={<Main />} />
               </>
             )}
           </Routes>

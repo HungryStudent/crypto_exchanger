@@ -6,8 +6,7 @@
     top: 0;
     left: 0;
     overflow: auto;
-    background: rgb(15,14,14);
-    background: linear-gradient(90deg, rgba(15,14,14,1) 22%, rgba(251,63,63,1) 100%);
+    background-color: black;
 }
 
 .Block{
@@ -27,7 +26,8 @@
     margin-left: 72px;
     margin-bottom: 60px;
     color: #ffffff; 
-    font-family: ‘Trocchi’, serif; 
+    font-family: "Montserrat", serif; 
+    letter-spacing: 0.5px;
     font-size: 45px; 
     font-weight: normal; 
     line-height: 48px; 

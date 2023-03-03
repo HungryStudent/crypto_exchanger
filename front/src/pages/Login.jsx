@@ -4,6 +4,7 @@ import React, { useState, useMemo, useEffect,useContext }  from "react";
 
 
 
+
 const Login = () => {
 
   const [authData, setAuthData] = useState({});
@@ -28,13 +29,12 @@ const Login = () => {
     });
     let data = await response.json();
     if (response.status === 200) {
-      window.location = '/main'
-      alert('Успешный вход');
+      window.location = '/'
       localStorage.setItem('token', data.token);
       setToken(data.token);
 
     } else {
-      alert('Вышел и зашел обратно');
+      alert('Неверные данные');
     }
   };
 
