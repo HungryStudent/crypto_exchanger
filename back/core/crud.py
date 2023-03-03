@@ -88,7 +88,7 @@ def create_pair(pair_data: schemas.PairCreate, db: Session):
 def change_pair(pair_id, pair_data: schemas.PairChange, db: Session):
     stmt = (
         update(Pairs).
-        where(pair_id == Currencies.id).
+        where(pair_id == Pairs.id).
         values(pair_data.dict(exclude_unset=True)).
         returning(Pairs)
     )
